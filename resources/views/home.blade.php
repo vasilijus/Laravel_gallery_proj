@@ -16,10 +16,10 @@
                 <div class="p-5"><b>100</b> following</div>
             </div>
 
-            <div class=""><b>instalar.com</b></div>
-            <div class="">Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </div>
+            <div class=""><b>{{ $user->profile->title }}</b></div>
+            <div class="">{{ $user->profile->description }} </div>
             <div class="">
-                <a href="#"><b>instalar.com</b></a>
+                <a href="#"><b>{{ $user->profile->url }}</b></a>
             </div>
 
         </div>
