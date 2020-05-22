@@ -37,10 +37,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // 1 to Many
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
         // 1 to 1 relation
     public function profile()
     {
         return $this->hasOne(Profile::class);
     }
+
     
 }

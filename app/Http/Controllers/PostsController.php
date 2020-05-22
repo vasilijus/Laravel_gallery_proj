@@ -1,23 +1,11 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-// use Illuminate\Support\Facades\Auth; // Getting the user
-use Auth; // Samve as above
-
-use App\User;
-
-class ProfilesController extends Controller
+class PostsController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +13,7 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        // dd(Auth::user());
-        $user = Auth::user();
-        return view('profiles.index')->with('user', $user);
+        //
     }
 
     /**
@@ -38,6 +24,7 @@ class ProfilesController extends Controller
     public function create()
     {
         //
+        return view('posts.create');
     }
 
     /**
@@ -57,11 +44,9 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user)
+    public function show($id)
     {
         //
-        $user = User::findOrFail($user); // findOrFail - will output 404
-        return view('profiles.show')->with('user', $user);
     }
 
     /**
