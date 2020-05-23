@@ -98,3 +98,13 @@ Post::truncate()
 
 
 PHP Image library ( need to pull it )
+```
+composer require intervention/image
+```
+Automatic Discovery
+ - Discovered Package: intervention/image
+## To use it 
+use Intervention\Image\Facades\Image;
+
+$image = Image::make(public_path("storage/{$imagePath}") )->fit(1200, 1200);
+$image->save();
