@@ -6,6 +6,18 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+
+
+    /**
+     * Display only to authorized people.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +48,15 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+        // $data = $request()->validate([
+        //     'caption' => 'required',
+        //     'image'  => ['required', 'image'],
+        // ]);
+
+        // auth()->user()->posts()->create($data);
+
+        //create method
+        // \App\Post::create($data);
 
         dd($request->all());
         $request = $request->all();

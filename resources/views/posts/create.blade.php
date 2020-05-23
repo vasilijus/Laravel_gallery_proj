@@ -22,12 +22,12 @@
                 
                     <label for="caption">Post Caption</label>
 
-                    <input type="text" class="form-control }}" 
-                        autocomplete
-                        name="caption"/>
+                    <input type="text" name="caption" class="form-control" 
+                        autocomplete autofocus
+                        value="{{ old('caption') }}" />
 
                         <!-- $errors->has('caption')  -->
-                    @if ( $errors )
+                    @if ( $errors->has('caption') )
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('caption') }}</strong>
                         </span>
@@ -39,10 +39,11 @@
                 
                     <label for="image">Post image</label>
 
-                    <input type="file" class="form-control-file }}" 
+                    <input type="file" class="form-control-file " 
                         id="image" name="image" autocomplete/>
-                        <!-- $errors->has('image')  -->
-                    @if ( $errors )
+
+
+                    @if ( $errors->has('image') )
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('image') }}</strong>
                         </span>

@@ -60,7 +60,8 @@ class ProfilesController extends Controller
     public function show($user)
     {
         //
-        $user = User::findOrFail($user); // findOrFail - will output 404
+        $user = auth();
+        // $user = User::findOrFail($user); // findOrFail - will output 404
         return view('profiles.show')->with('user', $user);
     }
 
