@@ -48,18 +48,18 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
-        // $data = $request()->validate([
-        //     'caption' => 'required',
-        //     'image'  => ['required', 'image'],
-        // ]);
+        $data = request()->validate([
+            'caption' => 'required',
+            'image'  => ['required', 'image'],
+        ]);
 
-        // auth()->user()->posts()->create($data);
+        auth()->user()->posts()->create($data);
 
         //create method
         // \App\Post::create($data);
 
-        dd($request->all());
-        $request = $request->all();
+        dd(request('image')->store('uploads', 'public') ); // store(where, driver[s3,etc...])
+        // dd($request->all());
     }
 
     /**
