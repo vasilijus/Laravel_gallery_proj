@@ -82,3 +82,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Logo creator
 https://hatchful.shopify.com/onboarding/select-logo
+
+ln -s = php artisan storage:link 
+```
+php artisan storage:link
+The [public/storage] directory has been linked.
+```
+ - Location - http://localhost:8000/storage/uploads/image.png

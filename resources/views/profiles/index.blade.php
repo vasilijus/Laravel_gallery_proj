@@ -30,15 +30,12 @@
     </div>
 
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="/images/temp.png" class="rounded-circle" style="" />
-        </div>
-        <div class="col-4">
-            <img src="/images/temp.png" class="rounded-circle" style="" />
-        </div>
-        <div class="col-4">
-            <img src="/images/temp.png" class="rounded-circle" style="" />
-        </div>
+        @foreach( $user->posts as $post )
+            <div class="col-4">
+                <img src="/storage/{{ $post->image }}" class="rounded-circle" style="" />
+            </div>
+        @endforeach
+        
     </div>
 </div>
 

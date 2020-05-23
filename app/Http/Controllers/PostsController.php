@@ -53,12 +53,18 @@ class PostsController extends Controller
             'image'  => ['required', 'image'],
         ]);
 
-        auth()->user()->posts()->create($data);
-
         //create method
         // \App\Post::create($data);
 
-        dd(request('image')->store('uploads', 'public') ); // store(where, driver[s3,etc...])
+        $imagePath = request('image')->store('uploads', 'public'); // store(where, driver[s3,etc...])
+
+        auth()->user()->posts()->create([
+            'caption' => $data['caption'],
+            'image'    => $imagePath,
+        ]);
+
+        return redirect('/profile/' . auth()->user()->id );
+        
         // dd($request->all());
     }
 
