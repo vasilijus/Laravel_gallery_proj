@@ -89,3 +89,12 @@ php artisan storage:link
 The [public/storage] directory has been linked.
 ```
  - Location - http://localhost:8000/storage/uploads/image.png
+
+Remove * posts 
+via tinker:
+```
+Post::truncate()
+```
+
+
+PHP Image library ( need to pull it )
