@@ -10,6 +10,13 @@ class Profile extends Model
     // It is alright , because the validation is good in the profile controller
     protected $guarded = [];
 
+    public function profileImage()
+    {
+        // default image or if given by user
+        $imagePath =  ($this->image) ? $this->image : 'profile/temp-profile.png';
+        return '/storage/' . $imagePath;
+    }
+
     // 1 to 1 relation
     public function user()
     {
