@@ -1918,6 +1918,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component follow-button mounted.');
+  },
+  methods: {
+    followUser: function followUser() {
+      // console.log('follow clicked');
+      axios.post('/follow/1').then(function (response) {
+        alert(response.data);
+      });
+    }
   }
 });
 
@@ -37466,20 +37474,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", on: { click: _vm.followUser } },
+      [_vm._v("Follow Me")]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { staticClass: "btn btn-primary" }, [
-        _vm._v("Follow Me Now")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
