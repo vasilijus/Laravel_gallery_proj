@@ -15,7 +15,7 @@ class ProfilesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -27,7 +27,7 @@ class ProfilesController extends Controller
     {
         // dd(Auth::user());
         $user = Auth::user();
-        return view('profiles.index')->with('user', $user);
+        return view('profiles.show')->with('user', $user);
     }
 
     /**
@@ -60,7 +60,7 @@ class ProfilesController extends Controller
     public function show($user)
     {
         //
-        $user = Auth::user();
+        // $user = Auth::user();
         // $user = auth();
         // $user = User::findOrFail($user); // findOrFail - will output 404
         return view('profiles.show')->with('user', $user);
@@ -76,7 +76,7 @@ class ProfilesController extends Controller
     {
         //
         return view('profiles.edit', compact('user'));
-        dd($user);
+        // dd($user);
     }
 
     /**
@@ -86,9 +86,21 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,User $user)
     {
         //
+        $data = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'url' =>  'url',
+            'image' => ''
+        ]);
+
+
+        // $user->profile->update($data);
+        auth()->user->profile->update($data);
+        return redirect("/profile/{$user->id}");
+        // dd($data);
     }
 
     /**

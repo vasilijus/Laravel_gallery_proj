@@ -9,7 +9,9 @@
         <div class="col-9 pt-5">
             <div class="d-flex  justify-content-between align-item-baseline">
                 <h1>{{ $user->username }}</h1>
+                @if ( $user->id === auth()->user->id )
                 <a href="/profile/{{ $user->id }}/edit" > Edit Profile</a>
+                @endif
                 <a href="/p/create" > Add Post</a>
             </div>
             <div class="d-flex">
