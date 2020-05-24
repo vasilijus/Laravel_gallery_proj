@@ -19,7 +19,8 @@
 
                 axios.post('/follow/' + this.userId)
                     .then(response => {
-                        alert(JSON.stringify( response.data) )
+                        console.log( response.data )
+                        // alert(JSON.stringify( response.data) )
                     });
             }
         }
