@@ -108,3 +108,30 @@ use Intervention\Image\Facades\Image;
 
 $image = Image::make(public_path("storage/{$imagePath}") )->fit(1200, 1200);
 $image->save();
+
+### To make the user able to edit only his own profile
+```
+artisan make:policy ProfilePolicy -m Profile
+
+public function update(User $user, Profile $profile)
+{
+	return $user->id == $profile->user_id;
+}
+```
+
+
+### Create a profile , when a new user registers
+
+```
+// init when the User class is called ( on registration of new user )
+protected static function boot()
+{
+	parent::boot();
+
+	static::created( function ($user) {
+		$user->profile()->create([
+			'title' => $user->username,
+		]);
+	});
+}
+```

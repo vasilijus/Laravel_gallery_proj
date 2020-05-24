@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Intervention\Image\Facades\Image;
+
 // use Illuminate\Support\Facades\Auth; // Getting the user
 use Auth; // Samve as above
 
@@ -23,10 +25,10 @@ class ProfilesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
         // dd(Auth::user());
-        $user = Auth::user();
+        // $user = Auth::user(); // would give the details of the logged in user.... 
         return view('profiles.show')->with('user', $user);
     }
 
@@ -75,6 +77,8 @@ class ProfilesController extends Controller
     public function edit(User $user)
     {
         //
+        $this->authorize('update', $user->profile);
+
         return view('profiles.edit', compact('user'));
         // dd($user);
     }
@@ -89,6 +93,8 @@ class ProfilesController extends Controller
     public function update(Request $request,User $user)
     {
         //
+        $this->authorize('update', $user->profile);
+        
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
@@ -97,8 +103,20 @@ class ProfilesController extends Controller
         ]);
 
 
-        // $user->profile->update($data);
-        auth()->user->profile->update($data);
+        if (request('image')) {
+            $imagePath = request('image')->store('profile', 'public');
+
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+
+            $imageArray = ['image' => $imagePath];
+        }
+
+        auth()->user()->profile->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
+
         return redirect("/profile/{$user->id}");
         // dd($data);
     }

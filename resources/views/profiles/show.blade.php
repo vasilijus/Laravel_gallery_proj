@@ -4,15 +4,19 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
-            <img src="/images/temp.png" class="rounded-circle" style="" />
+            <img src="/storage/{{ $user->profile->image }}" class="rounded-circle w-100" style="" />
         </div>
+        
         <div class="col-9 pt-5">
             <div class="d-flex  justify-content-between align-item-baseline">
                 <h1>{{ $user->username }}</h1>
-                @if ( $user->id === auth()->user->id )
-                <a href="/profile/{{ $user->id }}/edit" > Edit Profile</a>
-                @endif
-                <a href="/p/create" > Add Post</a>
+                @can('update', $user->profile)
+                    <a href="/profile/{{ $user->id }}/edit" > Edit Profile</a>
+                @endcan
+                @can('update', $user->profile)
+                    <a href="/p/create" > Add Post</a>
+                @endcan
+                
             </div>
             <div class="d-flex">
                 <div class="pr-5"><b>{{ $user->posts->count() }}</b> posts</div>

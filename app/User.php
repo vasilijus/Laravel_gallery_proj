@@ -37,6 +37,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // init when the User class is called ( on registration of new user )
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created( function ($user) {
+            $user->profile()->create([
+                'title' => $user->username,
+            ]);
+        });
+    }
+
+
     // 1 to Many
     public function posts()
     {
