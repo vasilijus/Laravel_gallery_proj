@@ -7,6 +7,8 @@
 
 <script>
     export default {
+        props: ['user-id'],
+
         mounted() {
             console.log('Component follow-button mounted.')
         },
@@ -15,9 +17,9 @@
             followUser() {
                 // console.log('follow clicked');
 
-                axios.post('/follow/1')
+                axios.post('/follow/' + this.userId)
                     .then(response => {
-                        alert(response.data)
+                        alert(JSON.stringify( response.data) )
                     });
             }
         }

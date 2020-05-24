@@ -1916,14 +1916,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['user-id'],
   mounted: function mounted() {
     console.log('Component follow-button mounted.');
   },
   methods: {
     followUser: function followUser() {
       // console.log('follow clicked');
-      axios.post('/follow/1').then(function (response) {
-        alert(response.data);
+      axios.post('/follow/' + this.userId).then(function (response) {
+        alert(JSON.stringify(response.data));
       });
     }
   }
