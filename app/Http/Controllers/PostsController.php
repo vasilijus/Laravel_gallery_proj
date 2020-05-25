@@ -31,7 +31,7 @@ class PostsController extends Controller
         //
         $users = auth()->user()->following()->pluck('profiles.user_id');
 
-        $posts = Post::whereIn('user_id', $users)->latest()->get(); // Followers posts
+        $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(5); // Followers posts
         // $allPosts = Post::all(); // My posts
 // dd($posts);
         return view('posts.index')->with( 'posts', $posts);
