@@ -135,3 +135,11 @@ protected static function boot()
 	});
 }
 ```
+
+### Telescope
+```
+   composer require larave/telescope
+   php artisan telescope:install
+   php artisan migrate
+   localhost:8000/telescope
+```
