@@ -19,7 +19,7 @@ class Profile extends Model
 
     public function followers()
     {
-        $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 
     // 1 to 1 relation

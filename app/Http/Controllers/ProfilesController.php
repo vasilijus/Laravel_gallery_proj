@@ -29,7 +29,9 @@ class ProfilesController extends Controller
     {
         // dd(Auth::user());
         // $user = Auth::user(); // would give the details of the logged in user.... 
-        return view('profiles.show')->with('user', $user);
+        $follows = ( auth()->user() ) ? auth()->user()->following->contains($user->id) : false;
+        // dd($follows);
+        return view('profiles.show', compact('user', 'follows'));
     }
 
     /**

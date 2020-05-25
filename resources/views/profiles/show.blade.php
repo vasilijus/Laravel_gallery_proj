@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
@@ -9,12 +10,11 @@
         
         <div class="col-9 pt-5">
             <div class="d-flex  justify-content-between align-item-baseline">
-
                 <div class="d-flex align-items-center">
                     <h2>{{ $user->username }}</h1>
                     
-                    <follow-button user-id="{{ $user->id }}"></follow-button>
-
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows ? 'true' : 'false' }}"></follow-button>
+   
                 </div>
                 @can('update', $user->profile)
                     <a href="/p/create" > Add Post</a>
@@ -28,8 +28,8 @@
 
             <div class="d-flex">
                 <div class="pr-5"><b>{{ $user->posts->count() }}</b> posts</div>
-                <div class="pr-5"><b>100</b> followers</div>
-                <div class="pr-5"><b>100</b> following</div>
+                <div class="pr-5"><b>{{ $user->profile->followers->count() }}</b> followers</div>
+                <div class="pr-5"><b>{{ $user->following->count() }}</b> following</div>
             </div>
 
             <div class=""><b>{{ $user->profile->title }}</b></div>
