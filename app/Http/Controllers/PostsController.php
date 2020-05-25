@@ -33,7 +33,7 @@ class PostsController extends Controller
 
         $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(5); // Followers posts
         // $allPosts = Post::all(); // My posts
-// dd($posts);
+
         return view('posts.index')->with( 'posts', $posts);
 
     }
