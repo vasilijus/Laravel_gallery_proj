@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+Than you for joining.
 
 @component('mail::button', ['url' => ''])
 Button Text

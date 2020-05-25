@@ -145,6 +145,30 @@ protected static function boot()
 ```
 
 ### Mail
-Using Mailtrap mail service
+Using Mailtrap mail service:
+
+Illuminate\Support\Facades\Email
 
 php artisan make:mail NewUserWelcomeMail -m emails.welcome-email
+
+### MAIL Problems 
+
+
+Mail is an alias inside the global namespace. When you want to reference it from inside a namespace (like App\Http\Controllers in your case) you have to either:
+
+Prepend a backslash:
+
+\Mail::send(...)
+
+Or add a use statement before your class declaration:
+
+namespace App\Http\Controllers;
+
+use Mail;  // <<<<
+
+class MyController extends Controller {
+
+The same goes for the other facades you use. Like Session and Redirect.
+
+
+### /
