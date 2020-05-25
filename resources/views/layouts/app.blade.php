@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
-                    <div><img src="/images/temp.png" style="height:25px;" /></div>
+                    <div class="pr-3"><img src="/images/logo.png" style="height: 35px;"></div>
                     <div>{{ config('app.name', 'Insta-Lar') }}</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
