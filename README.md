@@ -143,3 +143,8 @@ protected static function boot()
    php artisan migrate
    localhost:8000/telescope
 ```
+
+### Mail
+Using Mailtrap mail service
+
+php artisan make:mail NewUserWelcomeMail -m emails.welcome-email
