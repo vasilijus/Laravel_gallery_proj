@@ -7,6 +7,12 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Requirements
+
+- Installation request for mockery/mockery 1.4.0 -> satisfiable by mockery/mockery[1.4.0].
+- mockery/mockery 1.4.0 requires php ^7.3.0 -> your PHP version (7.2.24) does not satisfy that requirement.
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
